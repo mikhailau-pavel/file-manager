@@ -9,7 +9,7 @@ export const upperDir = () => {
   } else { 
     pathTo.pop()
     if (pathTo.length === 1) {
-      chdir('\\');
+      chdir('\\')
     } else {
       chdir(pathTo.join('\\'))
     }
