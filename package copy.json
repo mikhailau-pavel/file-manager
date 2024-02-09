@@ -1,13 +1,12 @@
 {
-  "name": "file-manager",
+  "name": "node-nodejs-basics",
   "version": "1.0.0",
+  "description": "This repository is the part of nodejs-assignments https://github.com/AlreadyBored/nodejs-assignments",
   "engines": {
     "node": ">=20.0.0"
   },
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
-    "start": "node src/script.js",
-    "test-welcome": "node src/modules/welcomeMessage.js",
     "cli:args": "node src/cli/args.js --some-arg value1 --other 1337 --arg2 42",
     "cli:env": "npx cross-env SOME=any RSS_foo=bar RSS_bar=baz node src/cli/env.js",
     "cp": "node src/cp/cp.js",
@@ -26,8 +25,19 @@
     "zip:compress": "node src/zip/compress.js",
     "zip:decompress": "node src/zip/decompress.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlreadyBored/node-nodejs-basics.git"
+  },
   "keywords": [
-    "file-manager"
+    "nodejs",
+    "assignments",
+    "alreadybored"
   ],
-  "author": "mikhailau-pavel"
+  "author": "alreadybored",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AlreadyBored/node-nodejs-basics/issues"
+  },
+  "homepage": "https://github.com/AlreadyBored/node-nodejs-basics#readme"
 }
