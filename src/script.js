@@ -4,7 +4,7 @@ import { welcomeMessage } from "./modules/welcomeMessage.js"
 import { exitMessage } from "./modules/exitMessage.js"
 import { getUsername } from '../src/modules/welcomeMessage.js'
 import { upperDir, goToDir, listOfFiles } from '../src/modules/navigation.js'
-import { readFile, createEmptyFile, renameFile } from '../src/modules/operationWithFiles.js'
+import { readFile, createEmptyFile, renameFile, copyFile, deleteFile, moveFile } from '../src/modules/operationWithFiles.js'
  
 const goToHomeDir = () => {
   chdir(homedir())
@@ -48,6 +48,18 @@ const readCommand = () => {
           break
         case 'rn' :
           renameFile(firstArg, secondArg)
+          showCurrentDirectory()
+          break
+        case 'cp' :
+          copyFile(firstArg, secondArg)
+          showCurrentDirectory()
+          break
+        case 'rm' :
+          deleteFile(firstArg)
+          showCurrentDirectory()
+          break
+        case 'mv' :
+          moveFile(firstArg, secondArg)
           showCurrentDirectory()
           break
         default :

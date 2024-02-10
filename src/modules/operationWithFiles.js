@@ -1,5 +1,5 @@
-import { createReadStream } from 'fs'
-import { writeFile, rename } from 'fs/promises'
+import { createReadStream, createWriteStream } from 'fs'
+import { writeFile, rename, unlink, rm } from 'fs/promises'
 import { stdout, cwd } from 'process'
 import { showCurrentDirectory } from '../script.js'
 import path from 'path'
@@ -47,4 +47,42 @@ export const renameFile = async (pathTo, newFileName) => {
 }
 
 
+export const copyFile = async (pathToFile, pathToCreateCopy) => {
+  try {
+    let pathToCopy = path.join(pathToCreateCopy, path.basename(pathToFile))
+    const readStream = createReadStream(pathToFile)
+    const writeStream = createWriteStream(pathToCopy)
+    readStream.pipe(writeStream)
+  }
+  catch (err) {
+    console.error('Operation failed')
+    console.error(err)
+  }
+}
+
+export const deleteFile = async (pathTo) => {
+  try {
+    await rm(pathTo)
+  }
+  catch(err) {
+      console.log ('Operation failed', err)
+  }
+}
+
+export const moveFile = async (pathToFile, pathToCreateCopy) => {
+  try {
+    let pathToCopy = path.join(pathToCreateCopy, path.basename(pathToFile))
+    const readStream = createReadStream(pathToFile)
+    const writeStream = createWriteStream(pathToCopy)
+    const pipeItImSoTired = readStream.pipe(writeStream)
+    pipeItImSoTired.on('close', () => {
+      rm(pathToFile)
+      }
+    )
+  }
+  catch (err) {
+    console.error('Operation failed')
+    console.error(err)
+  }
+}
 
