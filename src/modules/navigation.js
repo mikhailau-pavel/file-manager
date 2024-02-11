@@ -8,7 +8,6 @@ export const upperDir = () => {
   const pathTo = folders.split('\\')
 
   if (cwd() === root) {
-    //console.log('Root directory')
     return 
   } else { 
     pathTo.pop()
