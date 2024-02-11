@@ -5,6 +5,8 @@ import { exitMessage } from "./modules/exitMessage.js"
 import { getUsername } from '../src/modules/welcomeMessage.js'
 import { upperDir, goToDir, listOfFiles } from '../src/modules/navigation.js'
 import { readFile, createEmptyFile, renameFile, copyFile, deleteFile, moveFile } from '../src/modules/operationWithFiles.js'
+import { calcHash } from "./modules/hash.js"
+import { compress, decompress } from './modules/compression.js'
  
 const goToHomeDir = () => {
   chdir(homedir())
@@ -60,6 +62,17 @@ const readCommand = () => {
           break
         case 'mv' :
           moveFile(firstArg, secondArg)
+          showCurrentDirectory()
+          break
+        case 'hash' :
+          calcHash(firstArg)
+          break
+        case 'compress' :
+          compress(firstArg, secondArg)
+          showCurrentDirectory()
+          break
+        case 'decompress' :
+          decompress(firstArg, secondArg)
           showCurrentDirectory()
           break
         default :
