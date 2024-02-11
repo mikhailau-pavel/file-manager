@@ -7,6 +7,7 @@ import { upperDir, goToDir, listOfFiles } from '../src/modules/navigation.js'
 import { readFile, createEmptyFile, renameFile, copyFile, deleteFile, moveFile } from '../src/modules/operationWithFiles.js'
 import { calcHash } from "./modules/hash.js"
 import { compress, decompress } from './modules/compression.js'
+import { getEOL, getCPU, getHomeDir, getUsernameInfo, getArchitecture } from './modules/os.js'
  
 const goToHomeDir = () => {
   chdir(homedir())
@@ -75,6 +76,32 @@ const readCommand = () => {
           decompress(firstArg, secondArg)
           showCurrentDirectory()
           break
+        case 'os' :
+          switch(firstArg) {
+            case '--EOL' :
+              getEOL()
+              showCurrentDirectory()
+              break
+            case '--cpus' :
+              getCPU()
+              showCurrentDirectory()
+              break
+            case '--homedir' :
+              getHomeDir()
+              showCurrentDirectory()
+              break
+            case '--username' :
+              getUsernameInfo()
+              showCurrentDirectory()
+              break
+            case '--architecture' :
+              getArchitecture()
+              showCurrentDirectory()
+              break
+            default :
+              console.log(`Invalid input, ${getUsername()}, print a command and wait for results:`)
+          }
+          break  
         default :
         console.log(`Invalid input, ${getUsername()}, print a command and wait for results:`)  
       }
